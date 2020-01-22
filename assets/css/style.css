@@ -1,0 +1,21 @@
+#title {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    margin-bottom: 5%;
+}
+
+.row {
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+.border {
+    border-radius: 5px;
+}
+
+#searchArea, #searchBar {
+    border: 4px solid #e6e6ea;
+    border-radius: 3px;
+}
