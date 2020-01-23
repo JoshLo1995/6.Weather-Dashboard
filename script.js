@@ -18,6 +18,11 @@ $(document).ready(function() {
             $(this).trigger("enterKey");
         }
     });
+
+    $(".previouslySearched").click(function(e) {
+        e.preventDefault();
+        console.log($(this).attr("id"));
+    })
 });
 
 /**
@@ -32,8 +37,13 @@ function load() {
 
 }
 
+function savePrevSearch() {
+
+}
+
 function init() {
     this.prevSearched = [];
+    this.counter = 0;
     loadTodayWeather(findUser());
 }
 
@@ -46,13 +56,13 @@ async function findUser() {
                 //try to get user current location using getCurrentPosition() method
                 navigator.geolocation.getCurrentPosition(function(position){ 
                     let coordinates = [position.coords.latitude, position.coords.longitude];
-                    debugger;
+                    debugger
                     return coordinates;
                     });
             } else {
                 console.log("Browser doesn't support geolocation!");
             }
-        }), 1000)
+        }), 1000) 
     });
 
     let coordinates = await promise;
@@ -62,8 +72,10 @@ async function findUser() {
 
 function addToPrevSearch() {
     let city = $("#searchBar").val();
+    
     this.prevSearched.push(city);
-    $(".previouslySearched").append("<div class = 'text-center'>" + city + "</div>");
+    $(".previouslySearched").append("<div id = 'prevSearched" + counter + "'" + "class = 'text-center'>" + city + "</div>");
+    counter++;
     $("#searchBar").val("");
     return city;
 }
